@@ -36,6 +36,8 @@ namespace NuagesSharpImplant.Utils
                 return bytes;
             }
             byte[] encrypted;
+
+            //Rijndael is not FIPS, so it may not work on FIPS-only systems
             using (Rijndael rijAlg = Rijndael.Create())
             {
                 rijAlg.Key = key;

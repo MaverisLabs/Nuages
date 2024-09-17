@@ -10,6 +10,7 @@ namespace NuagesSharpImplant
 
             Dictionary<string, string> config = new Dictionary<string, string>();
 
+            //MAY NEED TO ADD OWN JITTER HERE
             // Sleep time in between heartbeats
             config["sleep"] = "5";
 

